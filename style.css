@@ -1,0 +1,98 @@
+:root {
+    --main-color: #defdf1;
+    --main-size: 30px;
+}
+
+.hidden {
+    display: none;
+}
+
+html,
+body {
+    /* Reset html and body */
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: var(--main-color);
+}
+
+.container {
+    display: grid;
+    justify-items: center;
+
+    height: 100vh;
+    padding: 0 15px;
+}
+
+#main {
+    padding: var(--main-size);
+    margin: var(--main-size) 0;
+    border: 1px solid #578e3e;
+    align-self: center;
+
+    /* random values */
+    width: 70%;
+    max-width: 500px;
+    min-width: 350px;
+}
+
+#main,
+#main form > * {
+    /* max width is max width. */
+    /* padding and borders to be included */
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+/* Basically, all elements inside the form are the same */
+/* There is no need to use classes for the different form fields */
+#main form > input:not([type='checkbox']):not([type='radio']),
+#main form > button {
+    width: 100%;
+    height: var(--main-size);
+    outline: none; /* remove default outline */
+    border: 2px solid #c3cdc0;
+    padding: 0 5px;
+}
+
+#main form > input:not([type='checkbox']):not([type='radio']):hover {
+    border-color: #94bf84; /* intermediate green */
+}
+
+#main form > input:not([type='checkbox']):not([type='radio']):focus {
+    border-color: #79a06b;
+}
+
+#main form > input:not([type='checkbox']):not([type='radio']):not(:last-child) {
+    margin-bottom: 15px;
+}
+
+/* Possibly the only element where a class or id is appropriate */
+#main form button[type="submit"] {
+    color: #609270;
+    background-color: #cfe7d9;
+}
+
+#main form button[type="submit"]:hover {
+    color: #cee6d3;
+    background-color: #558d3d;
+    border-color: #cfe7d9;
+    cursor: pointer;
+}
+
+#main form .error {
+    color: #ff0000;
+}
+
+.form-result {
+    /* Sizes taken from the form, multiplied by two */
+    width: 70%;
+    max-width: 500px;
+    min-width: 350px;
+
+    word-break: break-word;
+    white-space: pre-line;
+}
