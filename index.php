@@ -20,7 +20,7 @@
 
                 <?php
                     foreach ($config_vars as $field_name => $class) {
-                        echo (define_build_function($class, $field_name))($field_name, $class);
+                        echo (define_build_function($class))($field_name, $class);
                     }
                 ?>
 

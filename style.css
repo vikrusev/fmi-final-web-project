@@ -40,16 +40,12 @@ body {
 
 #main,
 #main form > * {
-    /* max width is max width. */
     /* padding and borders to be included */
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
 }
 
-/* Basically, all elements inside the form are the same */
-/* There is no need to use classes for the different form fields */
-#main form > input:not([type='checkbox']):not([type='radio']),
 #main form > button {
     width: 100%;
     height: var(--main-size);
@@ -58,19 +54,6 @@ body {
     padding: 0 5px;
 }
 
-#main form > input:not([type='checkbox']):not([type='radio']):hover {
-    border-color: #94bf84; /* intermediate green */
-}
-
-#main form > input:not([type='checkbox']):not([type='radio']):focus {
-    border-color: #79a06b;
-}
-
-#main form > input:not([type='checkbox']):not([type='radio']):not(:last-child) {
-    margin-bottom: 15px;
-}
-
-/* Possibly the only element where a class or id is appropriate */
 #main form button[type="submit"] {
     color: #609270;
     background-color: #cfe7d9;
@@ -81,18 +64,4 @@ body {
     background-color: #558d3d;
     border-color: #cfe7d9;
     cursor: pointer;
-}
-
-#main form .error {
-    color: #ff0000;
-}
-
-.form-result {
-    /* Sizes taken from the form, multiplied by two */
-    width: 70%;
-    max-width: 500px;
-    min-width: 350px;
-
-    word-break: break-word;
-    white-space: pre-line;
 }
