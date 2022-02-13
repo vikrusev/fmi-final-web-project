@@ -2,11 +2,15 @@
 
 require('html_classes.php');
 
+/**
+ * Schema taken from official VSCode docs
+ * https://code.visualstudio.com/docs/editor/tasks-appendix
+ */
 class TaskConfiguration extends BaseTaskConfiguration {
     /**
      * The configuration's version number
      * 
-     * ? Has default value
+     * ? Defaults to 1.0.0
      */
     public $version;
 
@@ -55,7 +59,7 @@ class BaseTaskConfiguration {
     /**
      * Specifies whether a global command is a background task.
      * 
-     * ? Has default value
+     * ? Defaults to false
      */
     public $isBackground;
 
@@ -107,7 +111,7 @@ class CommandOptions {
      * The current working directory of the executed program or shell.
      * If omitted the current workspace's root is used.
      * 
-     * ? Has default value
+     * ? Defaults to ./
      */
     public $cwd;
 
@@ -130,34 +134,32 @@ class CommandOptions {
 class PresentationOptions {
     /**
      * Controls whether the task output is reveal in the user class.
-     * Defaults to `always`.
      * 
-     * ? Has default value
+     * ? Defaults to always
      */
     public $reveal; // 'never' | 'silent' | 'always';
 
     /**
      * Controls whether the command associated with the task is echoed
-     * in the user class. Defaults to `true`.
+     * in the user class
      * 
-     * ? Has default value
+     * ? Defaults to true
      */
     public $echo; // boolean;
 
     /**
-     * Controls whether the panel showing the task output is taking focus.
-     * Defaults to `false`.
+     * Controls whether the panel showing the task output is taking focus
      * 
-     * ? Has default value
+     * ? Defaults to false
      */
     public $focus; // boolean;
 
     /**
      * Controls if the task panel is used for this task only (dedicated),
      * shared between tasks (shared) or if a new panel is created on
-     * every task execution (new). Defaults to `shared`.
+     * every task execution (new)
      * 
-     * ? Has default value
+     * ? Defaults to shared
      */
     public $panel; // 'shared' | 'dedicated' | 'new';
 
@@ -165,15 +167,14 @@ class PresentationOptions {
      * Controls whether to show the `Terminal will be reused by tasks,
      * press any key to close it` message.
      * 
-     * ? Has default value
+     * ? Defaults to tru
      */
     public $showReuseMessage; // boolean;
 
     /**
-     * Controls whether the terminal is cleared before this task is run.
-     * Defaults to `false`.
+     * Controls whether the terminal is cleared before this task is run
      * 
-     * ? Has default value
+     * ? Defaults to false
      */
     public $clear; // boolean;
 

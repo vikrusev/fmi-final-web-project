@@ -49,7 +49,6 @@ function build_HTML_Text($field_name, $class_data, $hide_html = false) {
                 . build_label_for($field_name)
                 . "<input type='text' id='$field_name' name='$field_name' placeholder='" . $class_data->value . "'/>"
             . "</div>";
-
 }
 
 function build_HTML_Checkbox($field_name, $_ = '', $hide_html = false) {
