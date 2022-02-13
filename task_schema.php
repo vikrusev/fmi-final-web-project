@@ -75,7 +75,7 @@ class BaseTaskConfiguration {
      * 
      * * Optional
      */
-    public $args; // string[];
+    public $args; // string;
 
     /**
      * The presentation options.
@@ -121,7 +121,7 @@ class CommandOptions {
      * 
      * * Optional
      */
-    public $env; // { [key: string]: string };
+    public $env; // string;
 
     public function __construct()
     {
