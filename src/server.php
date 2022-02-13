@@ -20,7 +20,7 @@ function prepare_json_array($post_data) {
 
         if (isset($class[2])) {
             if (isset($json_array[$family][$class[2]])) {
-                if (is_string($json_array[$family][$class[2]])) {
+                if (is_bool($json_array[$family][$class[2]])) {
                     unset($json_array[$family][$class[2]]);
                 }
 
