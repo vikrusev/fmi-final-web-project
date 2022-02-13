@@ -167,7 +167,7 @@ class PresentationOptions {
      * Controls whether to show the `Terminal will be reused by tasks,
      * press any key to close it` message.
      * 
-     * ? Defaults to tru
+     * ? Defaults to true
      */
     public $showReuseMessage; // boolean;
 

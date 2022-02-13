@@ -17,19 +17,17 @@ function build_label_for($name, $parent) {
     return "<label for='$name$parent'>$name</label>";
 }
 
-function build_array_html_field($field_name, $class, $hide_html = false, $parent_name = '') {
-    foreach ($class as $value) {
-        echo (define_build_function($value))($field_name, $value, $hide_html, $parent_name);
-    }
-}
-
 function build_special_checkbox($field_name, $class, $hide_html = false, $parent_name = '') {
-    echo build_HTML_Checkbox($field_name, false, $hide_html, $parent_name);
+    $is_from_main = $parent_name == 'main';
+    $parent = $is_from_main ? $field_name : $parent_name;
 
-    foreach ($class as $property => $class_value) {
-        $parent = $parent_name == 'main' ? $field_name : $parent_name;
-        echo (define_build_function($class_value))($property, $class_value, false, $parent);
-    }
+    echo "<div class='" . ($is_from_main ? 'group' : 'sub-group') . "'>";
+        echo build_HTML_Checkbox($field_name, false, $hide_html, $parent_name);
+
+        foreach ($class as $property => $class_value) {
+            echo (define_build_function($class_value))($property, $class_value, false, $parent);
+        }
+    echo '</div>';
 }
 
 function build_html_element($field, $class, $hide_html = false, $parent_name) {
