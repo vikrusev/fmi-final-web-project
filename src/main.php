@@ -1,6 +1,6 @@
 <?php
 
-require('task_schema.php');
+require('schemas/task_schema.php');
 
 $config = new TaskConfiguration();
 $config_vars = get_object_vars($config);
