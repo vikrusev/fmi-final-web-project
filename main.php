@@ -21,8 +21,8 @@ function build_special_checkbox($field_name, $class, $hide_html = false, $parent
     $is_from_main = $parent_name == 'main';
     $parent = $is_from_main ? $field_name : $parent_name;
 
-    echo "<div class='" . ($is_from_main ? 'group' : 'sub-group') . "'>";
-        echo build_HTML_Checkbox($field_name, false, $hide_html, $parent_name);
+    echo "<div class='hidden " . ($is_from_main ? 'group' : 'sub-group') . "'>";
+        echo build_HTML_Checkbox($field_name, false, false, $parent_name);
 
         foreach ($class as $property => $class_value) {
             echo (define_build_function($class_value))($property, $class_value, false, $parent);
@@ -45,6 +45,7 @@ function build_HTML_Text($field_name, $class_data, $hide_html = false, $parent_n
 function build_HTML_Checkbox($field_name, $item_data = false, $hide_html = false, $parent_name = '') {
     $parent = $parent_name ? "-$parent_name" : '';
     $checked = is_object($item_data) ? $item_data->checked : false;
+
     return "<div class='row" . ($hide_html ? ' hidden' : '') . "'>" 
                 . "<input type='checkbox' id='$field_name$parent' name='$field_name$parent'" . ($checked ? 'checked' : '') . "/>"
                 . build_label_for($field_name, $parent)

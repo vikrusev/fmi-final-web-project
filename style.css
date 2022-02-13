@@ -5,7 +5,7 @@
     --dark-green-border: #799c6e;
 }
 
-.hidden {
+.hidden div:not(:first-of-type) {
     display: none;
 }
 
