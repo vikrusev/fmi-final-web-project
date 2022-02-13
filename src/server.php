@@ -99,7 +99,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"):
         <div id="main">
             <?= $json; ?>
 
-            <button onclick='copyToClipboard(<?= $json ?>)'>Copy to clipboard</button>
+            <button onclick='copyToClipboard(<?= $json ?>)'>Запазване в клипборда</button>
+            <button onclick="history.back()">Назад</button>
         </div>
     </div>
 </body>
