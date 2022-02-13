@@ -19,7 +19,7 @@ function build_label_for($name, $parent) {
 
 function build_special_checkbox($field_name, $class, $_, $parent_name = '') {
     $is_from_main = $parent_name == 'main';
-    $parent = $is_from_main ? $field_name : $parent_name;
+    $parent = $is_from_main ? $field_name : $parent_name . '-' . $field_name;
 
     echo "<div class='hidden " . ($is_from_main ? 'group' : 'sub-group') . "'>";
         echo build_HTML_Checkbox($field_name, false, true, $parent_name);
@@ -39,7 +39,7 @@ function build_HTML_Text($field_name, $class_data, $hide_html = false, $parent_n
 
     return "<div class='row" . ($hide_html ? ' hidden' : '') . "'>" 
                 . build_label_for($field_name, $parent)
-                . "<input type='text' id='$field_name$parent' name='$field_name$parent' placeholder='" . $class_data->value . "'/>"
+                . "<input type='text' id='$field_name$parent' name='$field_name$parent' value='" . $class_data->value . "'/>"
             . "</div>";
 }
 
@@ -73,24 +73,6 @@ function build_HTML_Select($field_name, $data, $hide_html = false, $parent_name 
                     . $selection
                 . "</select>"
             . "</div>";
-}
-
-// foreach ($fields as $name => $value) {
-//     var_dump($value);
-// }
-// initiate logic for POST request
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    // prepare the validator
-    // $validator = new Validator($validate_form_inputs, 
-    //                             $validate_form_rules, 
-    //                             $validate_form_rules_error_messages, 
-    //                             $validate_form_rules_display_messages);
-
-    // // validate the form data
-    // $validator->validate($_POST);
-
-    echo $config->version;
 }
 
 ?>

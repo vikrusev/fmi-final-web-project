@@ -17,7 +17,7 @@
 
     <div class="container">
         <div id="main">
-            <form id="validate" method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
+            <form id="validate" method="POST" action="server.php">
 
                 <?php
                     foreach ($config_vars as $field_name => $class) {
@@ -28,7 +28,6 @@
                 <button type="submit">Генерирай <b>tasks.json</b></button>
             </form>
         </div>
-
     </div>
 </body>
 
