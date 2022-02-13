@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="style.css" />
+    <script src="main.js"></script>
 </head>
 
 <body>
@@ -24,7 +25,7 @@
                     }
                 ?>
 
-                <button type="submit">Генерирай</button>
+                <button type="submit">Генерирай <b>tasks.json</b></button>
             </form>
         </div>
 

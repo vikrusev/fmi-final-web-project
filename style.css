@@ -15,7 +15,7 @@ body {
     padding: 0;
     margin: 0;
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
 
     background-color: var(--main-color);
 }
@@ -24,7 +24,7 @@ body {
     display: grid;
     justify-items: center;
 
-    height: 100vh;
+    min-height: 100vh;
     padding: 0 15px;
 }
 
@@ -51,6 +51,11 @@ body {
 #main form .row {
     height: calc(1.7 * var(--main-size));
     line-height: calc(1.7 * var(--main-size) - 4px);
+}
+
+#main form .sub-group .row:not(:first-of-type) {
+    height: calc(1.2 * var(--main-size));
+    line-height: calc(1.2 * var(--main-size) - 4px);
 }
 
 #main form .row:not(:last-of-type),
@@ -104,11 +109,12 @@ body {
 
 #main form > button {
     width: 100%;
-    height: var(--main-size);
+    height: calc(var(--main-size) + 5px);
     outline: none; /* remove default outline */
     border: 2px solid var(--light-green-border);
     margin-top: var(--main-size);
     padding: 0 5px;
+    font-size: 17px;
 }
 
 #main form button[type="submit"] {
