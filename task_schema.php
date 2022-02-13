@@ -92,7 +92,7 @@ class BaseTaskConfiguration {
         ), 0);
         $this->command = new HTML_Text('', true);
         $this->isBackground = new HTML_Checkbox(false);
-        $this->args = array(new HTML_Text(''));
+        $this->args = new HTML_Text('');
         $this->options = new CommandOptions();
         $this->presentation = new PresentationOptions();
     }
@@ -126,7 +126,7 @@ class CommandOptions {
     public function __construct()
     {
         $this->cwd = new HTML_Text('./');
-        $this->env = array(new HTML_Text(''));
+        $this->env = new HTML_Text('');
         // $this->env = new Checkbox(false);
     }
 }

@@ -5,10 +5,8 @@ require('task_schema.php');
 $config = new TaskConfiguration();
 $config_vars = get_object_vars($config);
 
-function define_build_function($class) {
-    if (is_array($class)) {
-        return 'build_array_html_field';
-    }
+function define_build_function($class, $parent_name = '') {
+
 
     if (in_array(get_class($class), $GLOBALS['HTML_CLASSES'])) {
         return 'build_html_element';
@@ -17,56 +15,53 @@ function define_build_function($class) {
     return 'build_special_checkbox';
 }
 
-function build_label_for($name) {
-    return "<label for='$name'>$name</label>";
+function build_label_for($name, $parent_name = '') {
+    $parent = $parent_name ? "-$parent_name" : '';
+    return "<label for='$name$parent'>$name</label>";
 }
 
-function build_array_html_field($field_name, $class, $hide_html = false) {
+function build_array_html_field($field_name, $class, $hide_html = false, $parent_name = '') {
     foreach ($class as $value) {
-        echo (define_build_function($value))($field_name, $value, $hide_html);
+        echo (define_build_function($value))($field_name, $value, $hide_html, $parent_name);
     }
 }
 
-function build_special_checkbox($field_name, $class, $hide_html = false) {
-    echo build_HTML_Checkbox($field_name, '', $hide_html);
+function build_special_checkbox($field_name, $class, $hide_html = false, $parent_name = '') {
+    echo build_HTML_Checkbox($field_name, false, $hide_html);
 
     foreach ($class as $property => $class_value) {
-        if (is_array($class_value)) {
-            build_array_html_field($property, $class_value, false);
-        }
-        else {
-            echo (define_build_function($class_value))($property, $class_value, false);
-        }
+        echo (define_build_function($class_value))($property, $class_value, false, $field_name);
     }
 }
 
-function build_html_element($field, $class, $hide_html = false) {
-    return ('build_' . get_class($class))($field, $class, $hide_html);
+function build_html_element($field, $class, $hide_html = false, $parent_name = '') {
+    return ('build_' . get_class($class))($field, $class, $hide_html, $parent_name);
 }
 
-function build_HTML_Text($field_name, $class_data, $hide_html = false) {
-    return "<div class='" . ($hide_html ? 'hidden' : '') . "'>" 
-                . build_label_for($field_name)
+function build_HTML_Text($field_name, $class_data, $hide_html = false, $parent_name = '') {
+    return "<div class='row" . ($hide_html ? ' hidden' : '') . "'>" 
+                . build_label_for($field_name, $parent_name)
                 . "<input type='text' id='$field_name' name='$field_name' placeholder='" . $class_data->value . "'/>"
             . "</div>";
 }
 
-function build_HTML_Checkbox($field_name, $_ = '', $hide_html = false) {
-    return "<div class='" . ($hide_html ? 'hidden' : '') . "'>" 
-                . "<input type='checkbox' id='$field_name' name='$field_name' />"
-                . build_label_for($field_name)
+function build_HTML_Checkbox($field_name, $item_data = false, $hide_html = false, $parent_name = '') {
+    $checked = is_object($item_data) ? $item_data->checked : false;
+    return "<div class='row" . ($hide_html ? ' hidden' : '') . "'>" 
+                . "<input type='checkbox' id='$field_name' name='$field_name'" . ($checked ? 'checked' : '') . "/>"
+                . build_label_for($field_name, $parent_name)
             . "</div>";
 }
 
-function build_HTML_Select($field_name, $data, $hide_html = false) {
+function build_HTML_Select($field_name, $data, $hide_html = false, $parent_name = '') {
     $selection = '';
 
     foreach($data->options as $key => $value) {
         $selection .= "<option value='$value' " . ($key == $data->selected_index ? 'selected' : '') . ">$value</option>";
     }
 
-    return "<div class='" . ($hide_html ? 'hidden' : '') . "'>" 
-                . build_label_for($field_name)
+    return "<div class='row" . ($hide_html ? ' hidden' : '') . "'>" 
+                . build_label_for($field_name, $parent_name)
                 . "<select name='$field_name' id='$field_name'>"
                     . $selection
                 . "</select>"

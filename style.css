@@ -1,6 +1,7 @@
 :root {
     --main-color: #defdf1;
     --main-size: 30px;
+    --light-green-border: #c3cdc0;
 }
 
 .hidden {
@@ -46,11 +47,41 @@ body {
     -moz-box-sizing: border-box;
 }
 
+#main form > .row {
+    height: calc(1.7 * var(--main-size));
+    line-height: calc(1.7 * var(--main-size));
+    border-bottom: 1px solid var(--light-green-border);
+}
+
+#main form > .row:last-of-type {
+    border: none;
+}
+
+#main form > .row label {
+    margin-right: 10px;
+    cursor: pointer;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#main form > .row input:not([type="checkbox"]),
+#main form > .row select {
+    height: calc(0.65 * var(--main-size));
+    padding: 2px 4px;
+    letter-spacing: 1px;
+    font-family: monospace;
+}
+
+#main form > .row input[type="checkbox"] {
+    height: calc(0.65 * var(--main-size));
+    width: calc(0.65 * var(--main-size));
+}
+
 #main form > button {
     width: 100%;
     height: var(--main-size);
     outline: none; /* remove default outline */
-    border: 2px solid #c3cdc0;
+    border: 2px solid var(--light-green-border);
+    margin-top: var(--main-size);
     padding: 0 5px;
 }
 
