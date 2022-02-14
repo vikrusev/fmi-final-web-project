@@ -3,8 +3,7 @@
 function createTableUsers($conn) {
     $query = "CREATE TABLE users (
             id int(11) AUTO_INCREMENT,
-            email varchar(255) NOT NULL,
-            password varchar(255) NOT NULL,
+            username varchar(255) NOT NULL,
             PRIMARY KEY (id)
             )";
 
