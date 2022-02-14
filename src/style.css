@@ -28,7 +28,8 @@ body {
     padding: 0 15px;
 }
 
-#main {
+#main,
+#response {
     padding: var(--main-size);
     margin: var(--main-size) 0;
     border: 1px solid #578e3e;
@@ -41,6 +42,7 @@ body {
 }
 
 #main,
+#response,
 #main form > * {
     /* padding and borders to be included */
     box-sizing: border-box;
@@ -107,24 +109,66 @@ body {
     margin-left: 30px;
 }
 
-#main form > button {
+#main button,
+#response button {
     width: 100%;
     height: calc(var(--main-size) + 5px);
     outline: none; /* remove default outline */
     border: 2px solid var(--light-green-border);
-    margin-top: var(--main-size);
     padding: 0 5px;
     font-size: 17px;
 }
 
-#main form button[type="submit"] {
-    color: #609270;
-    background-color: #cfe7d9;
+#main button {
+    margin-top: var(--main-size);
 }
 
-#main form button[type="submit"]:hover {
+#main button,
+#response button {
+    color: #609270;
+    background-color: #cfe7d9;
+    padding: 0 var(--main-size);
+}
+
+#response button.back {
+    color: #dd6c59;
+    background-color: #e7dccf;
+    width: fit-content;
+}
+
+#main form button:hover,
+#response button:hover {
     color: #cee6d3;
     background-color: #558d3d;
     border-color: #cfe7d9;
     cursor: pointer;
+}
+
+#response button.back:hover {
+    color: #e7dccf;
+    background-color: #dd6c59;
+    border-color: #e7dacf;
+}
+
+#response .actions {
+    display: flex;
+    column-gap: var(--main-size);
+}
+
+#response pre {
+    font-size: 14px;
+}
+
+@media only screen and (max-width: 720px) {
+    #response .actions {
+        flex-direction: column;
+    }
+
+    #response button {
+        width: initial !important;
+    }
+
+    #response button:not(:first-of-type) {
+        margin-top: calc(var(--main-size) / 2);
+    }
 }

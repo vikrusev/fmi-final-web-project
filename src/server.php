@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"):
     $json_array = prepare_json_array($_POST);
 
     // encode the cleaned json_array to pure JSON
-    $json = json_encode(json_array_cleanup($json_array));
+    $json = json_encode(json_array_cleanup($json_array), JSON_PRETTY_PRINT);
 ?>
 
 <!DOCTYPE html>
@@ -86,21 +86,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"):
 
     <script>
         function copyToClipboard(json) {
-            const data = JSON.stringify(json);
-
-            navigator.clipboard.writeText(data);
-            alert(`Copied the text: ${data}`);
+            navigator.clipboard.writeText(JSON.stringify(json, null, 2));
+            alert('Запазено в клипборда!');
         }
     </script>
 </head>
 
 <body>
     <div class="container">
-        <div id="main">
-            <?= $json; ?>
+        <div id="response">
+            <div class="actions">
+                <button class="copy" onclick='copyToClipboard(<?= $json ?>)'>Запазване в клипборда</button>
+                <button class="back" onclick="history.back()">Назад</button>
+            </div>
 
-            <button onclick='copyToClipboard(<?= $json ?>)'>Запазване в клипборда</button>
-            <button onclick="history.back()">Назад</button>
+            <pre><?= $json; ?></pre>
         </div>
     </div>
 </body>
