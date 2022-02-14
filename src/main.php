@@ -2,6 +2,11 @@
 
 session_start();
 
+if (isset($_SESSION['user_name'])) {
+    $username = $_SESSION['user_name'];
+    echo "Welcome" . (!isset($_SESSION['is_new']) ? " back, " : ", ") . "$username!";
+}
+
 function authenticate($location_redirect, $auth_fields) {
     foreach ($auth_fields as $field) {
         if (!array_key_exists($field, $_SESSION)) {

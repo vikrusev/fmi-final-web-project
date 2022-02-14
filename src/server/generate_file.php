@@ -76,6 +76,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $_SESSION['generated_json'] = json_encode(json_array_cleanup($json_array), JSON_PRETTY_PRINT);
 
     header('Location: ../pages/present.php');
+    exit();
 }
+
+header('Location: ../');
+exit();
 
 ?>

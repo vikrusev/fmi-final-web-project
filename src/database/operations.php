@@ -10,14 +10,20 @@
  */
 
 function insertUser($conn, $user_name) {
-    $result = mysqli_query($conn, "INSERT INTO users (username) VALUES ('$user_name')");
+    $query = "INSERT INTO users (username) VALUES (?)";
 
-    if ($result) {
-        echo "User '$user_name' added to DB.";
-    }
-    else {
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('s', $user_name);
+    $stmt->execute();
+
+    if ($stmt->error) {
         echo "Failed adding user '$user_name' to DB. Error: $conn->error";
     }
+    else {
+        echo "User '$user_name' added to DB.";
+    }
+
+    return mysqli_stmt_insert_id($stmt);
 }
 
 function insertHistory($conn, $historyData) {
@@ -29,6 +35,18 @@ function insertHistory($conn, $historyData) {
     else {
         echo "Failed adding history to DB. Error: $conn->error";
     }
+}
+
+function getUser($conn, $user_name) {
+    $query = "SELECT * FROM users WHERE username=?";
+
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('s', $user_name);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    return $result->fetch_assoc();
 }
 
 
