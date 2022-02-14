@@ -1,6 +1,6 @@
 <?php
 
-require_once('database/db.php');
+require_once('../database/db.php');
 
 function prepare_json_array($post_data) {
     $json_array = array();
@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"):
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../style.css" />
 
     <script>
         function copyToClipboard(json) {

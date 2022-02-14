@@ -1,6 +1,6 @@
 :root {
     --main-color: #defdf1;
-    --main-size: 30px;
+    --main-size: 25px;
     --light-green-border: #c3cdc0;
     --dark-green-border: #799c6e;
 }
@@ -29,6 +29,7 @@ body {
 }
 
 #main,
+#login,
 #response {
     padding: var(--main-size);
     margin: var(--main-size) 0;
@@ -42,6 +43,7 @@ body {
 }
 
 #main,
+#login,
 #response,
 #main form > * {
     /* padding and borders to be included */
@@ -87,11 +89,16 @@ body {
 }
 
 #main form .row input:not([type="checkbox"]),
+#login form .row input:not([type="checkbox"]),
 #main form .row select {
     height: calc(0.65 * var(--main-size));
     padding: 2px 4px;
     letter-spacing: 1px;
     font-family: monospace;
+}
+
+#main form .row select {
+    height: var(--main-size);
 }
 
 #main form .row input[type="checkbox"] {
@@ -110,6 +117,7 @@ body {
 }
 
 #main button,
+#login button,
 #response button {
     width: 100%;
     height: calc(var(--main-size) + 5px);
@@ -119,11 +127,13 @@ body {
     font-size: 17px;
 }
 
-#main button {
+#main button,
+#login button {
     margin-top: var(--main-size);
 }
 
 #main button,
+#login button,
 #response button {
     color: #609270;
     background-color: #cfe7d9;
@@ -137,6 +147,7 @@ body {
 }
 
 #main form button:hover,
+#login form button:hover,
 #response button:hover {
     color: #cee6d3;
     background-color: #558d3d;
@@ -157,6 +168,15 @@ body {
 
 #response pre {
     font-size: 14px;
+}
+
+#login label {
+    margin-bottom: 5px;
+}
+
+#login .row {
+    display: flex;
+    flex-direction: column;
 }
 
 @media only screen and (max-width: 720px) {
