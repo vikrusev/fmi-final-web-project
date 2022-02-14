@@ -17,7 +17,7 @@
 
     <div class="container">
         <div id="main">
-            <form id="validate" method="POST" action="../server/generate_file.php">
+            <form id="form" method="POST" action="../server/generate_file.php">
 
                 <?php
                     foreach ($config_vars as $field_name => $class) {
@@ -25,7 +25,13 @@
                     }
                 ?>
 
-                <button type="submit">Генерирай <b>tasks.json</b></button>
+                <div class="actions">
+                    <button type="submit">Генерирай <b>tasks.json</b></button>
+                    <button type="button" class="logout" onclick="logout()">Изход</button>
+                </div>
+            </form>
+
+            <form id="logout" method="POST" action="../server/logout.php">
             </form>
         </div>
     </div>

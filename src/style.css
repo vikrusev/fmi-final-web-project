@@ -140,7 +140,8 @@ body {
     padding: 0 var(--main-size);
 }
 
-#response button.back {
+#response button.back,
+#form button.logout {
     color: #dd6c59;
     background-color: #e7dccf;
     width: fit-content;
@@ -155,13 +156,14 @@ body {
     cursor: pointer;
 }
 
-#response button.back:hover {
+#response button.back:hover,
+#form button.logout:hover {
     color: #e7dccf;
     background-color: #dd6c59;
     border-color: #e7dacf;
 }
 
-#response .actions {
+.actions {
     display: flex;
     column-gap: var(--main-size);
 }
@@ -179,16 +181,26 @@ body {
     flex-direction: column;
 }
 
+#logout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+
 @media only screen and (max-width: 720px) {
-    #response .actions {
+    .actions {
         flex-direction: column;
     }
 
-    #response button {
-        width: initial !important;
+    #response button,
+    #form button {
+        width: 100% !important;
     }
 
-    #response button:not(:first-of-type) {
+    #response button:not(:first-of-type),
+    #form button:not(:first-of-type) {
         margin-top: calc(var(--main-size) / 2);
     }
 }

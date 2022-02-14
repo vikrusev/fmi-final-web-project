@@ -8,3 +8,7 @@ function showHide(element) {
         closestParentClassList.add('hidden');
     }
 }
+
+function logout() {
+    document.getElementById('logout').submit();
+}
