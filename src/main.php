@@ -1,5 +1,16 @@
 <?php
 
+session_start();
+
+function authenticate($location_redirect, $auth_fields) {
+    foreach ($auth_fields as $field) {
+        if (!array_key_exists($field, $_SESSION)) {
+            header("Location: $location_redirect");
+            exit();
+        }
+    }
+}
+
 require('schemas/task_schema.php');
 
 $config = new TaskConfiguration();

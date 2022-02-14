@@ -12,6 +12,15 @@
 </head>
 
 <body>
+    <?php
+        require('main.php');
+
+        if (array_key_exists('user_id', $_SESSION)) {
+            header("Location: pages/form.php");
+            exit();
+        }
+    ?>
+
     <div class="container">
         <div id="login">
             <form method="POST" action="server/login.php">

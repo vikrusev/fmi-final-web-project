@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once('../database/db.php');
 
 function prepare_json_array($post_data) {
@@ -67,46 +69,13 @@ function json_array_cleanup($json_array) {
 }
 
 // initiate logic for POST request
-if ($_SERVER["REQUEST_METHOD"] == "POST"):
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $json_array = prepare_json_array($_POST);
 
     // encode the cleaned json_array to pure JSON
-    $json = json_encode(json_array_cleanup($json_array), JSON_PRETTY_PRINT);
+    $_SESSION['generated_json'] = json_encode(json_array_cleanup($json_array), JSON_PRETTY_PRINT);
+
+    header('Location: ../pages/present.php');
+}
+
 ?>
-
-<!DOCTYPE html>
-
-<html lang="bg">
-
-<head>
-    <title>WEB Final Project</title>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="stylesheet" href="../style.css" />
-
-    <script>
-        function copyToClipboard(json) {
-            navigator.clipboard.writeText(JSON.stringify(json, null, 2));
-            alert('Запазено в клипборда!');
-        }
-    </script>
-</head>
-
-<body>
-    <div class="container">
-        <div id="response">
-            <div class="actions">
-                <button class="copy" onclick='copyToClipboard(<?= $json ?>)'>Запазване в клипборда</button>
-                <button class="back" onclick="history.back()">Назад</button>
-            </div>
-
-            <pre><?= $json; ?></pre>
-        </div>
-    </div>
-</body>
-
-</html>
-
-<?php endif; ?>

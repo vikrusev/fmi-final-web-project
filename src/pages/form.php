@@ -8,16 +8,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="style.css" />
-    <script src="main.js"></script>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../main.js"></script>
 </head>
 
 <body>
-    <?php require('main.php'); ?>
+    <?php require('../main.php'); authenticate('../', ['user_id']); ?>
 
     <div class="container">
         <div id="main">
-            <form id="validate" method="POST" action="server/generate_file.php">
+            <form id="validate" method="POST" action="../server/generate_file.php">
 
                 <?php
                     foreach ($config_vars as $field_name => $class) {
