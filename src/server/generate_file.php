@@ -3,6 +3,7 @@
 session_start();
 
 require_once('../database/db.php');
+require_once('../database/operations.php');
 
 function prepare_json_array($post_data) {
     $json_array = array();
@@ -74,6 +75,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // encode the cleaned json_array to pure JSON
     $_SESSION['generated_json'] = json_encode(json_array_cleanup($json_array), JSON_PRETTY_PRINT);
+
+    insertHistory($conn, json_encode(json_array_cleanup($json_array)));
 
     header('Location: ../pages/present.php');
     exit();

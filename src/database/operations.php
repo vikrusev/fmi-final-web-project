@@ -26,14 +26,18 @@ function insertUser($conn, $user_name) {
     return mysqli_stmt_insert_id($stmt);
 }
 
-function insertHistory($conn, $historyData) {
-    $result = mysqli_query($conn, "INSERT INTO histories (configuration) VALUES ($historyData)");
+function insertHistory($conn, $history_data) {
+    $query = "INSERT INTO histories (user_id, configuration) VALUES (?,?)";
 
-    if ($result) {
-        echo "History added to DB.";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('is', $_SESSION['user_id'], $history_data);
+    $stmt->execute();
+
+    if ($stmt->error) {
+        echo "Failed adding history to DB. Error: $conn->error";
     }
     else {
-        echo "Failed adding history to DB. Error: $conn->error";
+        echo "History added to DB.";
     }
 }
 
