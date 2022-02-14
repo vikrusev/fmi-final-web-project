@@ -6,7 +6,7 @@ require_once('../database/db.php');
 require_once('../database/operations.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $user_name = $_POST['username'];
+    $user_name = $conn->real_escape_string($_POST['username']);
     $user = getUser($conn, $user_name);
 
     if (is_null($user)) {
