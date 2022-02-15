@@ -8,6 +8,11 @@ require('html_classes.php');
  */
 class TaskConfiguration extends BaseTaskConfiguration {
     /**
+     * The configuration's name
+     */
+    public $name;
+
+    /**
      * The configuration's version number
      * 
      * ? Defaults to 1.0.0
@@ -32,6 +37,7 @@ class TaskConfiguration extends BaseTaskConfiguration {
     {
         parent::__construct();
 
+        $this->name = new HTML_Text();
         $this->version = new HTML_Text('1.0.0');
         $this->windows = new BaseTaskConfiguration();
         $this->linux = new BaseTaskConfiguration();
