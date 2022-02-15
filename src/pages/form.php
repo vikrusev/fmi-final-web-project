@@ -27,6 +27,7 @@
 
                 <div class="actions">
                     <button type="submit">Генерирай <b>tasks.json</b></button>
+                    <button type="button" class="history" onclick="logout()">История</button>
                     <button type="button" class="logout" onclick="logout()">Изход</button>
                 </div>
             </form>

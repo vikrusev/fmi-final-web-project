@@ -1,8 +1,13 @@
 :root {
     --main-color: #defdf1;
     --main-size: 25px;
-    --light-green-border: #c3cdc0;
-    --dark-green-border: #799c6e;
+    --light-green: #c3cdc0;
+    --middle-green: #cfe7d9;
+    --dark-green: #799c6e;
+    --light-red: #dd6c59;
+    --dark-red: #dd6c59;
+    --light-yellowish: #f0f579;
+    --dark-yellowish: #d59c1c;
 }
 
 .hidden div:not(:first-of-type) {
@@ -64,12 +69,12 @@ body {
 
 #main form .row:not(:last-of-type),
 #main form .group:not(:last-of-type) {
-    border-bottom: 2px solid var(--dark-green-border);
+    border-bottom: 2px solid var(--dark-green);
 }
 
 #main form .group .row,
 #main form .sub-group:not(:last-of-type) {
-    border-bottom: 1px dashed var(--dark-green-border);
+    border-bottom: 1px dashed var(--dark-green);
 }
 
 #main form .group div:first-of-type,
@@ -122,7 +127,7 @@ body {
     width: 100%;
     height: calc(var(--main-size) + 5px);
     outline: none; /* remove default outline */
-    border: 2px solid var(--light-green-border);
+    border: 2px solid var(--light-green);
     padding: 0 5px;
     font-size: 17px;
 }
@@ -136,14 +141,19 @@ body {
 #login button,
 #response button {
     color: #609270;
-    background-color: #cfe7d9;
+    background-color: var(--middle-green);
     padding: 0 var(--main-size);
 }
 
 #response button.back,
 #form button.logout {
-    color: #dd6c59;
+    color: var(--dark-red);
     background-color: #e7dccf;
+}
+
+#response button.back,
+#form button.logout,
+#form button.history {
     width: fit-content;
 }
 
@@ -152,20 +162,38 @@ body {
 #response button:hover {
     color: #cee6d3;
     background-color: #558d3d;
-    border-color: #cfe7d9;
+    border-color: var(--middle-green);
     cursor: pointer;
 }
 
 #response button.back:hover,
 #form button.logout:hover {
     color: #e7dccf;
-    background-color: #dd6c59;
+    background-color: var(--dark-red);
+    border-color: #e7dacf;
+}
+
+#form button.history:hover {
+    color: var(--light-yellowish);
+    background-color: var(--dark-yellowish);
+    border-color: var(--middle-green);
+    cursor: pointer;
+}
+
+#form button.history {
+    color: var(--dark-yellowish);
+    background-color: var(--light-yellowish);
     border-color: #e7dacf;
 }
 
 .actions {
     display: flex;
     column-gap: var(--main-size);
+}
+
+#form .actions {
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 #response pre {
@@ -189,6 +217,10 @@ body {
     visibility: hidden;
 }
 
+#form button:not(:first-of-type) {
+    margin-top: calc(var(--main-size) / 2);
+}
+
 @media only screen and (max-width: 720px) {
     .actions {
         flex-direction: column;
@@ -199,8 +231,7 @@ body {
         width: 100% !important;
     }
 
-    #response button:not(:first-of-type),
-    #form button:not(:first-of-type) {
+    #response button:not(:first-of-type) {
         margin-top: calc(var(--main-size) / 2);
     }
 }
