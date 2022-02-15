@@ -63,10 +63,13 @@ function build_HTML_Checkbox($field_name, $item_data = false, $hide_html = false
     $parent = $parent_name ? "-$parent_name" : '';
     $checked = is_object($item_data) ? $item_data->checked : false;
 
+    // autocomplete='off' so that they are not checked automatically
+    // if they have been checked and you go to them with history.back()
+    // https://stackoverflow.com/a/55927735/13213781
     $input_field = $hide_html ?
-        "<input onclick='showHide(this)' type='checkbox'
+        "<input onclick='showHide(this)' type='checkbox' autocomplete='off'
             id='$field_name$parent' name='$field_name$parent'" . ($checked ? 'checked' : '') . "/>"
-        : "<input type='checkbox' id='$field_name$parent'
+        : "<input type='checkbox' autocomplete='off' id='$field_name$parent'
             name='$field_name$parent'" . ($checked ? 'checked' : '') . "/>";
 
     return "<div class='row'>"
