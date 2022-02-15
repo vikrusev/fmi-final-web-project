@@ -43,11 +43,14 @@ function createTables($conn) {
     empty($resultHistories) && createTableHistories($conn);
 }
 
-function createDatabase($conn, $name) {
+function assureDatabaseExistence($conn, $name) {
     $result = mysqli_query($conn, "CREATE DATABASE IF NOT EXISTS $name");
 
     if ($result) {
         echo "Database '$name' is assured to exist.<br/>";
+    }
+    else {
+        echo "Failed assuring that DB '$name' exists.<br/>";
     }
 
     return $result;

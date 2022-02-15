@@ -18,7 +18,7 @@ if ($conn->connect_error) {
 
 echo "Connected to '$server_name' successfully<br/>";
 
-if (createDatabase($conn, $database_name)) {
+if (assureDatabaseExistence($conn, $database_name)) {
     if (mysqli_select_db($conn, $database_name)) {
         echo "Successfully connected to DB '$database_name'<br/>";
         createTables($conn);
@@ -26,6 +26,9 @@ if (createDatabase($conn, $database_name)) {
     else {
         echo "Failed connecting to DB '$database_name'<br/>";
     }
+}
+else {
+    echo "Something went wrong while assuring DB '$database_name' existence.";
 }
 
 ?>

@@ -1,5 +1,15 @@
 <?php
 
+function prepareQuery($conn, $query) {
+    $stmt = $conn->prepare($query);
+
+    if ($conn->error) {
+        echo "Error occurred while preparing the query: '$conn->error'";
+    }
+
+    return $stmt;
+}
+
 /**
  * Queries w/ variables MUST be build w/ prepared statements
  * 
@@ -12,7 +22,7 @@
 function insertUser($conn, $user_name) {
     $query = "INSERT INTO users (username) VALUES (?)";
 
-    $stmt = $conn->prepare($query);
+    $stmt = prepareQuery($conn, $query);
     $stmt->bind_param('s', $user_name);
     $stmt->execute();
 
@@ -29,7 +39,7 @@ function insertUser($conn, $user_name) {
 function insertHistory($conn, $history_data) {
     $query = "INSERT INTO histories (user_id, configuration) VALUES (?,?)";
 
-    $stmt = $conn->prepare($query);
+    $stmt = prepareQuery($conn, $query);
     $stmt->bind_param('is', $_SESSION['user_id'], $history_data);
     $stmt->execute();
 
@@ -44,7 +54,7 @@ function insertHistory($conn, $history_data) {
 function getUser($conn, $user_name) {
     $query = "SELECT * FROM users WHERE username=?";
 
-    $stmt = $conn->prepare($query);
+    $stmt = prepareQuery($conn, $query);
     $stmt->bind_param('s', $user_name);
     $stmt->execute();
 
@@ -56,7 +66,7 @@ function getUser($conn, $user_name) {
 function getHistories($conn, $user_id) {
     $query = "SELECT * FROM histories WHERE user_id=? ORDER BY id DESC";
 
-    $stmt = $conn->prepare($query);
+    $stmt = prepareQuery($conn, $query);
     $stmt->bind_param('i', $user_id);
     $stmt->execute();
 
