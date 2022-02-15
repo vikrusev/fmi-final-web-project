@@ -69,6 +69,11 @@ function json_array_cleanup($json_array) {
     return $json_array;
 }
 
+if (!isset($_SESSION['user_id'])) {
+    header('Location: ../');
+    exit();
+}
+
 // initiate logic for POST request
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $json_array = prepare_json_array($_POST);
