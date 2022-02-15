@@ -54,7 +54,7 @@ function getUser($conn, $user_name) {
 }
 
 function getHistories($conn, $user_id) {
-    $query = "SELECT * FROM histories WHERE user_id=?";
+    $query = "SELECT * FROM histories WHERE user_id=? ORDER BY id DESC";
 
     $stmt = $conn->prepare($query);
     $stmt->bind_param('i', $user_id);
