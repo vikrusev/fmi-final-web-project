@@ -3,7 +3,7 @@
 <html lang="bg">
 
 <head>
-    <title>WEB Final Project</title>
+    <title>Финален Проект УЕБ</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,7 +27,7 @@
 
                 <div class="actions">
                     <button type="submit">Генерирай <b>tasks.json</b></button>
-                    <button type="button" class="history" onclick="logout()">История</button>
+                    <a href="history.php"><button type="button" class="history">История</button></a>
                     <button type="button" class="logout" onclick="logout()">Изход</button>
                 </div>
             </form>
