@@ -4,11 +4,12 @@ require_once('prepare_db.php');
 require_once('operations.php');
 
 $server_name = "localhost";
-$user_name = "root";
+$user_name = "vikrusev";
 $database_name = "fmi_web_project";
+$password = "test123";
 
 // Create connection
-$conn = new mysqli($server_name, $user_name, '');
+$conn = new mysqli($server_name, $user_name, $password);
 
 // Check connection
 if ($conn->connect_error) {
