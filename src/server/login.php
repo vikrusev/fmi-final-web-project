@@ -1,9 +1,7 @@
 <?php
 
-session_start();
-
-require_once('../database/db.php');
-require_once('../database/operations.php');
+require_once('session.php');
+require_once('../database/requires.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_name = $conn->real_escape_string($_POST['username']);

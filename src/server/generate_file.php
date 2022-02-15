@@ -1,9 +1,7 @@
 <?php
 
-session_start();
-
-require_once('../database/db.php');
-require_once('../database/operations.php');
+require_once('session.php');
+require_once('../database/requires.php');
 
 function prepare_json_array($post_data) {
     $json_array = array();
