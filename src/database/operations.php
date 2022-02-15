@@ -53,5 +53,17 @@ function getUser($conn, $user_name) {
     return $result->fetch_assoc();
 }
 
+function getHistories($conn, $user_id) {
+    $query = "SELECT * FROM histories WHERE user_id=?";
+
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('i', $user_id);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
+    return $result->fetch_all();
+}
+
 
 ?>

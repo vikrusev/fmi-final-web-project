@@ -9,13 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="stylesheet" href="../style.css" />
-
-    <script>
-        function copyToClipboard(json) {
-            navigator.clipboard.writeText(JSON.stringify(json, null, 2));
-            alert('Запазено в клипборда!');
-        }
-    </script>
+    <script src="../main.js"></script>
 </head>
 
 <body>

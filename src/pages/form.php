@@ -27,7 +27,7 @@
 
                 <div class="actions">
                     <button type="submit">Генерирай <b>tasks.json</b></button>
-                    <a href="history.php"><button type="button" class="history">История</button></a>
+                    <a href="../server/get_history.php"><button type="button" class="history">История</button></a>
                     <button type="button" class="logout" onclick="logout()">Изход</button>
                 </div>
             </form>

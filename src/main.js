@@ -9,6 +9,15 @@ function showHide(element) {
     }
 }
 
+function copyToClipboard(json) {
+    navigator.clipboard.writeText(JSON.stringify(json, null, 2));
+    alert('Запазено в клипборда!');
+}
+
 function logout() {
     document.getElementById('logout').submit();
+}
+
+function prepareHistory(histories) {
+    alert(histories)
 }
