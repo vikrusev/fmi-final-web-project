@@ -4,7 +4,7 @@ session_start();
 
 if (isset($_SESSION['user_name'])) {
     $username = $_SESSION['user_name'];
-    echo "Welcome" . (!isset($_SESSION['is_new']) ? " back, " : ", ") . "$username!";
+    echo "<span id='welcome'>Welcome" . (!isset($_SESSION['is_new']) ? " back, " : ", ") . "$username!</span>";
 }
 
 function authenticate($location_redirect, $auth_fields) {
