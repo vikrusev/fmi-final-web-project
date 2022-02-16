@@ -1,7 +1,7 @@
 <?php
 
 require_once('session.php');
-require_once('../database/requires.php');
+require_once('../db/requires.php');
 
 if (!isset($_SESSION['user_id'])) {
     header('Location: ../');

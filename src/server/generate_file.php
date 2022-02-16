@@ -1,7 +1,7 @@
 <?php
 
 require_once('session.php');
-require_once('../database/requires.php');
+require_once('../db/requires.php');
 
 function prepare_json_array($post_data) {
     $json_array = array();
