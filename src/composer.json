@@ -1,5 +1,6 @@
 {
     "require": {
-        "robmorgan/phinx": "^0.12.10"
+        "robmorgan/phinx": "^0.12.10",
+        "symfony/yaml": "^6.0"
     }
 }
