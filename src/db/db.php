@@ -21,7 +21,8 @@ echo "Connected to '$server_name' successfully<br/>";
 if (assureDatabaseExistence($conn, $database_name)) {
     if (mysqli_select_db($conn, $database_name)) {
         echo "Successfully connected to DB '$database_name'<br/>";
-        createTables($conn);
+        // Deprecated due to Phinx
+        // createTables($conn);
     }
     else {
         echo "Failed connecting to DB '$database_name'<br/>";

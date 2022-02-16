@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Deprecated due to Phinx
+ */
 function createTableUsers($conn) {
     $query = "CREATE TABLE users (
             id int(11) AUTO_INCREMENT,
@@ -14,6 +17,9 @@ function createTableUsers($conn) {
     }
 }
 
+/**
+ * Deprecated due to Phinx
+ */
 function createTableHistories($conn) {
     $query = "CREATE TABLE histories (
             id int(11) AUTO_INCREMENT,
@@ -32,6 +38,9 @@ function createTableHistories($conn) {
     }
 }
 
+/**
+ * Deprecated due to Phinx
+ */
 function createTables($conn) {
     $queryUsers = "SELECT id FROM users";
     $resultUsers = mysqli_query($conn, $queryUsers);
