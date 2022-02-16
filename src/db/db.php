@@ -26,10 +26,12 @@ if (assureDatabaseExistence($conn, $database_name)) {
     }
     else {
         echo "Failed connecting to DB '$database_name'<br/>";
+        exit();
     }
 }
 else {
     echo "Something went wrong while assuring DB '$database_name' existence.";
+    exit();
 }
 
 ?>

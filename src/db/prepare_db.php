@@ -60,6 +60,7 @@ function assureDatabaseExistence($conn, $name) {
     }
     else {
         echo "Failed assuring that DB '$name' exists.<br/>";
+        exit();
     }
 
     return $result;
