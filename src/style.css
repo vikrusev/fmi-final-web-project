@@ -7,6 +7,8 @@
     --light-red: #dd6c59;
     --dark-red: #dd6c59;
     --light-blue: #a4b5f5;
+    --light-mint: #9cffe1;
+    --dark-mint: #0d9f72;
     --dark-blue: #283edc;
     --light-yellowish: #f0f579;
     --dark-yellowish: #d59c1c;
@@ -228,6 +230,14 @@ body {
     color: var(--dark-yellowish);
     background-color: var(--light-yellowish);
     border-color: #e7dacf;
+}
+
+#form button.create-new {
+    background-color: var(--light-mint);
+}
+
+#form button.create-new:hover {
+    background-color: var(--dark-mint);
 }
 
 .actions {

@@ -39,6 +39,7 @@
 <?php               endif; ?>
 
                     <a href="../server/get_history.php"><button type="button" class="history">История</button></a>
+                    <a href="form.php"><button type="button" class="create-new">Създай нов</button></a>
                     <button type="button" class="logout" onclick="logout()">Изход</button>
                 </div>
             </form>
