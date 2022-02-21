@@ -26,7 +26,13 @@
                     foreach ($_SESSION['histories'] as $history) {
 ?>
                         <pre><?= $history; ?></pre>
-                        <button class="copy" onclick='copyToClipboard(<?= $history; ?>)'>Запазване в клипборда</button>
+
+                        <div class="actions">
+                            <button class="copy" onclick='copyToClipboard(<?= $history; ?>)'>Запазване в клипборда</button>
+                            <a href="../pages/form.php?json=<?= $history; ?>">
+                                <button class="edit">Промени</button>
+                            </a>
+                        </div>
 <?php
                         if ($index++ != count($_SESSION['histories']) - 1) {
                             echo "<hr>";

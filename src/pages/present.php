@@ -19,6 +19,9 @@
         <div id="response">
             <div class="actions">
                 <button class="copy" onclick='copyToClipboard(<?= $_SESSION["generated_json"]; ?>)'>Запазване в клипборда</button>
+                <a href="../pages/form.php?json=<?= $history; ?>">
+                    <button class="edit">Промени</button>
+                </a>
                 <button class="back" onclick="history.back()">Назад</button>
             </div>
 
