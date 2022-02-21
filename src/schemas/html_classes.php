@@ -34,12 +34,12 @@ class HTML_Checkbox extends HTML_Field {
 
 class HTML_Select extends HTML_Field {
     public $options;
-    public $selected_index;
+    public $selected_name;
 
-    public function __construct($options, $selected_index = 0, $required = false) {
+    public function __construct($options, $selected_name = '', $required = false) {
         parent::__construct($required);
         $this->options = $options;
-        $this->selected_index = $selected_index;
+        $this->selected_name = $selected_name;
     }
 }
 

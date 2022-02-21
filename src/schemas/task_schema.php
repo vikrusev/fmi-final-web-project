@@ -2,6 +2,10 @@
 
 require('html_classes.php');
 
+function get_property($obj, $property_name) {
+    return !is_null($obj) && isset($obj[$property_name]) ? $obj[$property_name] : NULL;
+}
+
 /**
  * Schema taken from official VSCode docs
  * https://code.visualstudio.com/docs/editor/tasks-appendix
@@ -33,14 +37,14 @@ class TaskConfiguration extends BaseTaskConfiguration {
      */
     public $linux;
 
-    public function __construct()
+    public function __construct($obj = NULL)
     {
-        parent::__construct();
+        parent::__construct($obj);
 
-        $this->name = new HTML_Text();
-        $this->version = new HTML_Text('1.0.0');
-        $this->windows = new BaseTaskConfiguration();
-        $this->linux = new BaseTaskConfiguration();
+        $this->name = new HTML_Text(get_property($obj, 'name') ?: '');
+        $this->version = new HTML_Text(get_property($obj, 'version') ?: '1.0.0');
+        $this->windows = new BaseTaskConfiguration(get_property($obj, 'windows') ?: NULL);
+        $this->linux = new BaseTaskConfiguration(get_property($obj, 'linux') ?: NULL);
     }
 
 }
@@ -90,17 +94,17 @@ class BaseTaskConfiguration {
      */
     public $presentation;
 
-    public function __construct()
+    public function __construct($obj = NULL)
     {
         $this->type = new HTML_Select(array(
             'shell',
             'process'
-        ), 0);
-        $this->command = new HTML_Text('', true);
-        $this->isBackground = new HTML_Checkbox(false);
-        $this->args = new HTML_Text('');
-        $this->options = new CommandOptions();
-        $this->presentation = new PresentationOptions();
+        ), get_property($obj, 'type') ?: 'shell');
+        $this->command = new HTML_Text(get_property($obj, 'command') ?: '', true);
+        $this->isBackground = new HTML_Checkbox(get_property($obj, 'isBackground') ?: false);
+        $this->args = new HTML_Text(get_property($obj, 'args') ?: '');
+        $this->options = new CommandOptions(get_property($obj, 'options') ?: NULL);
+        $this->presentation = new PresentationOptions(get_property($obj, 'presentation') ?: NULL);
     }
 
     // public function addArg($value)
@@ -129,10 +133,10 @@ class CommandOptions {
      */
     public $env; // string;
 
-    public function __construct()
+    public function __construct($obj = NULL)
     {
-        $this->cwd = new HTML_Text('./');
-        $this->env = new HTML_Text('');
+        $this->cwd = new HTML_Text(get_property($obj, 'cwd') ?: './');
+        $this->env = new HTML_Text(get_property($obj, 'env') ?: '');
         // $this->env = new Checkbox(false);
     }
 }
@@ -184,22 +188,22 @@ class PresentationOptions {
      */
     public $clear; // boolean;
 
-    public function __construct()
+    public function __construct($obj = NULL)
     {
         $this->reveal = new HTML_Select(array(
             'always',
             'never',
             'silent'
-        ), 0);
-        $this->echo = new HTML_Checkbox(true);
-        $this->focus = new HTML_Checkbox(false);
+        ), get_property($obj, 'reveal') ?: 'always');
+        $this->echo = new HTML_Checkbox(get_property($obj, 'echo') ?: true);
+        $this->focus = new HTML_Checkbox(get_property($obj, 'focus') ?: false);
         $this->panel = new HTML_Select(array(
             'shared',
             'dedicated',
             'new'
-        ), 0);
-        $this->showReuseMessage = new HTML_Checkbox(true);
-        $this->clear = new HTML_Checkbox(false);
+        ), get_property($obj, 'panel') ?: 'shared');
+        $this->showReuseMessage = new HTML_Checkbox(get_property($obj, 'showReuseMessage') ?: true);
+        $this->clear = new HTML_Checkbox(get_property($obj, 'clear') ?: false);
     }
 }
 

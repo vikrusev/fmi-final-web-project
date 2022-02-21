@@ -63,6 +63,19 @@ function getUser($conn, $user_name) {
     return $result->fetch_assoc();
 }
 
+function getHistoryById($conn, $user_id, $history_id) {
+    $query = "SELECT * FROM histories WHERE user_id=? AND id=? ORDER BY id DESC";
+
+    $stmt = prepareQuery($conn, $query);
+    $stmt->bind_param('ii', $user_id, $history_id);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    $result = $result->fetch_assoc();
+
+    return $result ? $result['configuration'] : NULL;
+}
+
 function getHistories($conn, $user_id) {
     $query = "SELECT * FROM histories WHERE user_id=? ORDER BY id DESC";
 

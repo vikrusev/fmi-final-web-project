@@ -1,6 +1,7 @@
 <?php
 
 require_once('server/session.php');
+require_once('db/requires.php');
 
 if (isset($_SESSION['user_name'])) {
     $username = $_SESSION['user_name'];
@@ -19,6 +20,14 @@ function authenticate($location_redirect, $auth_fields) {
 require('schemas/task_schema.php');
 
 $config = new TaskConfiguration();
+if (isset($_SESSION['user_id']) && isset($_GET['history_id'])) {
+    $history = json_decode(getHistoryById($conn, $_SESSION['user_id'], $_GET['history_id']), true);
+
+    if (!is_null($history)) {
+        $config = new TaskConfiguration($history);
+    }
+}
+
 $config_vars = get_object_vars($config);
 
 function define_build_function($class) {
@@ -81,8 +90,8 @@ function build_HTML_Checkbox($field_name, $item_data = false, $parent_name = '',
 function build_HTML_Select($field_name, $data, $parent_name = '', $hide_html = false) {
     $selection = '';
 
-    foreach($data->options as $key => $value) {
-        $selection .= "<option value='$value' " . ($key == $data->selected_index ? 'selected' : '') . ">$value</option>";
+    foreach($data->options as $_ => $value) {
+        $selection .= "<option value='$value' " . ($value == $data->selected_name ? 'selected' : '') . ">$value</option>";
     }
 
     $parent = $parent_name ? "-$parent_name" : '';
