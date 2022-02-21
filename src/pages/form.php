@@ -32,7 +32,12 @@
                 ?>
 
                 <div class="actions">
-                    <button type="submit">Генерирай <b>tasks.json</b></button>
+<?php               if (isset($_GET['history_id'])): ?>
+                        <button type="submit">Запази промените</button>
+<?php               else: ?>
+                        <button type="submit">Генерирай <b>tasks.json</b></button>
+<?php               endif; ?>
+
                     <a href="../server/get_history.php"><button type="button" class="history">История</button></a>
                     <button type="button" class="logout" onclick="logout()">Изход</button>
                 </div>
