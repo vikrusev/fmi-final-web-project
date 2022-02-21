@@ -16,11 +16,11 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-echo "Connected to '$server_name' successfully<br/>";
+// echo "Connected to '$server_name' successfully<br/>";
 
 if (assureDatabaseExistence($conn, $database_name)) {
     if (mysqli_select_db($conn, $database_name)) {
-        echo "Successfully connected to DB '$database_name'<br/>";
+        // echo "Successfully connected to DB '$database_name'<br/>";
         // Deprecated due to Phinx
         // createTables($conn);
     }

@@ -56,7 +56,7 @@ function assureDatabaseExistence($conn, $name) {
     $result = mysqli_query($conn, "CREATE DATABASE IF NOT EXISTS $name");
 
     if ($result) {
-        echo "Database '$name' is assured to exist.<br/>";
+        // echo "Database '$name' is assured to exist.<br/>";
     }
     else {
         echo "Failed assuring that DB '$name' exists.<br/>";
