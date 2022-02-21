@@ -23,6 +23,12 @@
                     foreach ($config_vars as $field_name => $class) {
                         echo (define_build_function($class))($field_name, $class, 'main');
                     }
+
+                    if (isset($_GET['history_id'])):
+?>
+                        <input type="hidden" id="history_id" name="history_id" value="<?= $_GET['history_id'] ?>" />
+<?php
+                    endif;
                 ?>
 
                 <div class="actions">

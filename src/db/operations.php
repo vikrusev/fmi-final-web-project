@@ -36,6 +36,23 @@ function insertUser($conn, $user_name) {
     return mysqli_stmt_insert_id($stmt);
 }
 
+function updateHistory($conn, $history_data, $history_id) {
+    $query = "UPDATE histories SET configuration=? WHERE id=?";
+
+    $stmt = prepareQuery($conn, $query);
+    $stmt->bind_param('si', $history_data, $history_id);
+    $stmt->execute();
+
+    if ($stmt->error) {
+        echo "Failed updating history in DB. Error: $conn->error";
+        return -1;
+    }
+    else {
+        echo "History updated in DB.";
+        return $history_id;
+    }
+}
+
 function insertHistory($conn, $history_data) {
     $query = "INSERT INTO histories (user_id, configuration) VALUES (?,?)";
 
