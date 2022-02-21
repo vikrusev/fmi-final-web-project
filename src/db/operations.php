@@ -45,9 +45,11 @@ function insertHistory($conn, $history_data) {
 
     if ($stmt->error) {
         echo "Failed adding history to DB. Error: $conn->error";
+        return -1;
     }
     else {
         echo "History added to DB.";
+        return $stmt->insert_id;
     }
 }
 

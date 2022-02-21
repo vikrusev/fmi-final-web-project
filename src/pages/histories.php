@@ -23,13 +23,13 @@
             <?php
                 if (isset($_SESSION) && count($_SESSION['histories'])) {
                     $index = 0;
-                    foreach ($_SESSION['histories'] as $history) {
+                    foreach ($_SESSION['histories'] as $key => $history) {
 ?>
                         <pre><?= $history; ?></pre>
 
                         <div class="actions">
                             <button class="copy" onclick='copyToClipboard(<?= $history; ?>)'>Запазване в клипборда</button>
-                            <a href="../pages/form.php?json=<?= $history; ?>">
+                            <a href="../pages/form.php?history_id=<?= $key; ?>">
                                 <button class="edit">Промени</button>
                             </a>
                         </div>

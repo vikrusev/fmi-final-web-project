@@ -10,10 +10,10 @@ if (!isset($_SESSION['user_id'])) {
 
 $histories = getHistories($conn, $_SESSION['user_id']);
 
-$_SESSION['histories'] = [];
+$_SESSION['histories'] = array();
 
 foreach ($histories as $history) {
-    array_push($_SESSION['histories'], json_encode(json_decode($history[2]), JSON_PRETTY_PRINT));
+    $_SESSION['histories'][$history[0]] = json_encode(json_decode($history[2]), JSON_PRETTY_PRINT);
 }
 
 header('Location: ../pages/histories.php');

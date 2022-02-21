@@ -17,11 +17,12 @@
 
     <div class="container">
         <div id="response">
-            <pre><?= $_SESSION['generated_json']; ?></pre>
+            <?php $key = array_key_first($_SESSION['generated_json']); ?>
+            <pre><?= $_SESSION['generated_json'][$key]; ?></pre>
 
             <div class="actions">
-                <button class="copy" onclick='copyToClipboard(<?= $_SESSION["generated_json"]; ?>)'>Запазване в клипборда</button>
-                <a href="../pages/form.php?json=<?= $history; ?>">
+                <button class="copy" onclick='copyToClipboard(<?= $_SESSION["generated_json"][$key]; ?>)'>Запазване в клипборда</button>
+                <a href="../pages/form.php?history_id=<?= $key; ?>">
                     <button class="edit">Промени</button>
                 </a>
                 <button class="back" onclick="history.back()">Назад</button>

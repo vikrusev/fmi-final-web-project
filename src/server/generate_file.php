@@ -75,14 +75,19 @@ if (!isset($_SESSION['user_id'])) {
 // initiate logic for POST request
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $json_array = prepare_json_array($_POST);
+    $clean_json = json_array_cleanup($json_array);
 
-    // encode the cleaned json_array to pure JSON
-    $_SESSION['generated_json'] = json_encode(json_array_cleanup($json_array), JSON_PRETTY_PRINT);
+    $history_id = insertHistory($conn, json_encode($clean_json));
 
-    insertHistory($conn, json_encode(json_array_cleanup($json_array)));
+    if ($history_id != -1) {
+        $_SESSION['generated_json'] = array();
 
-    header('Location: ../pages/present.php');
-    exit();
+        // encode the cleaned json_array to pure JSON
+        $_SESSION['generated_json'][$history_id] = json_encode($clean_json, JSON_PRETTY_PRINT);
+    
+        header('Location: ../pages/present.php');
+        exit();
+    }
 }
 
 header('Location: ../');
