@@ -21,10 +21,10 @@ require('schemas/task_schema.php');
 
 $config = new TaskConfiguration();
 if (isset($_SESSION['user_id']) && isset($_GET['history_id'])) {
-    $history = json_decode(getHistoryById($conn, $_SESSION['user_id'], $_GET['history_id']), true);
+    $GLOBALS['edit_history'] = json_decode(getHistoryById($conn, $_SESSION['user_id'], $_GET['history_id']), true);
 
-    if (!is_null($history)) {
-        $config = new TaskConfiguration($history);
+    if (!is_null($GLOBALS['edit_history'])) {
+        $config = new TaskConfiguration($GLOBALS['edit_history']);
     }
 }
 
@@ -46,8 +46,17 @@ function build_special_checkbox($field_name, $class, $parent_name = '', $_ = fal
     $is_from_main = $parent_name == 'main';
     $parent = $is_from_main ? $field_name : $parent_name . '-' . $field_name;
 
-    echo "<div class='hidden " . ($is_from_main ? 'group' : 'sub-group') . "'>";
-        echo build_HTML_Checkbox($field_name, false, $parent_name, true);
+    if ($is_from_main) {
+        $checked = isset($GLOBALS['edit_history'][$field_name]);
+    }
+    else {
+        $checked = isset($GLOBALS['edit_history'][$parent_name][$field_name]);
+    }
+
+    $checked = (object) array('checked' => $checked);
+
+    echo "<div class='" . (!$checked->checked ? 'hidden' : '') . ($is_from_main ? ' group' : ' sub-group') . "'>";
+        echo build_HTML_Checkbox($field_name, $checked, $parent_name, true);
 
         foreach ($class as $property => $class_value) {
             echo (define_build_function($class_value))($property, $class_value, $parent);
