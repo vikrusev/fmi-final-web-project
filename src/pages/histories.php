@@ -18,7 +18,7 @@
 
     <div class="container">
         <div id="history">
-            <button class="back" onclick="history.back()">Назад</button>
+            <button class="back" onclick="goBack()">Назад</button>
 
             <?php
                 if (isset($_SESSION) && count($_SESSION['histories'])) {

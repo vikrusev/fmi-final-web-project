@@ -14,6 +14,10 @@ function copyToClipboard(json) {
     alert('Запазено в клипборда!');
 }
 
+function goBack() {
+    window.location.replace(document.referrer.split('?')[0]);
+}
+
 function logout() {
     document.getElementById('logout').submit();
 }
