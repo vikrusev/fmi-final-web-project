@@ -17,11 +17,20 @@
 
     <div class="container">
         <div id="response">
-            <?php $key = array_key_first($_SESSION['generated_json']); ?>
-            <pre><?= $_SESSION['generated_json'][$key]; ?></pre>
+            <?php
+                $key = array_key_first($_SESSION['generated_json']);
+
+                $history_display = json_decode($_SESSION['generated_json'][$key]);
+                unset($history_display->name);
+                $history_display = json_encode($history_display, JSON_PRETTY_PRINT);
+            ?>
+
+            <span class="config-name">Име: <?= json_decode($_SESSION['generated_json'][$key])->name ?></span>
+
+            <pre><?= $history_display; ?></pre>
 
             <div class="actions">
-                <button class="copy" onclick='copyToClipboard(<?= $_SESSION["generated_json"][$key]; ?>)'>Запазване в клипборда</button>
+                <button class="copy" onclick='copyToClipboard(<?= $history_display; ?>)'>Запазване в клипборда</button>
                 <a href="../pages/form.php?history_id=<?= $key; ?>">
                     <button class="edit">Промени</button>
                 </a>

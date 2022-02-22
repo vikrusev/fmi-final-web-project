@@ -23,6 +23,8 @@ body {
     min-height: 100vh;
 
     background-color: var(--main-color);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
 }
 
 .container {
@@ -118,7 +120,6 @@ body {
 #main form .row label {
     margin-right: 10px;
     cursor: pointer;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #main form .row input:not([type="checkbox"]),
@@ -255,6 +256,17 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     row-gap: calc(var(--main-size) / 2);
+}
+
+#history .history-item:not(:last-of-type) {
+    padding: 10px 0;
+    border-bottom: 1px solid #5e5e5e;
+}
+
+.config-name {
+    display: block;
+    text-align: center;
+    font-weight: 600;
 }
 
 #response pre,

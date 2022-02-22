@@ -24,19 +24,23 @@
                 if (isset($_SESSION) && count($_SESSION['histories'])) {
                     $index = 0;
                     foreach ($_SESSION['histories'] as $key => $history) {
+                        $history_display = json_decode($history);
+                        unset($history_display->name);
+                        $history_display = json_encode($history_display, JSON_PRETTY_PRINT);
 ?>
-                        <pre><?= $history; ?></pre>
+                        <div class="history-item">
+                            <span class="config-name">Име: <?= json_decode($history)->name; ?></span>
 
-                        <div class="actions">
-                            <button class="copy" onclick='copyToClipboard(<?= $history; ?>)'>Запазване в клипборда</button>
-                            <a href="../pages/form.php?history_id=<?= $key; ?>">
-                                <button class="edit">Промени</button>
-                            </a>
+                            <pre><?= $history_display; ?></pre>
+
+                            <div class="actions">
+                                <button class="copy" onclick='copyToClipboard(<?= $history_display; ?>)'>Запазване в клипборда</button>
+                                <a href="../pages/form.php?history_id=<?= $key; ?>">
+                                    <button class="edit">Промени</button>
+                                </a>
+                            </div>
                         </div>
 <?php
-                        if ($index++ != count($_SESSION['histories']) - 1) {
-                            echo "<hr>";
-                        }
                     }
                 }
                 else {
