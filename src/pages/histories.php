@@ -38,6 +38,9 @@
                                 <a href="../pages/form.php?history_id=<?= $key; ?>">
                                     <button class="edit">Промени</button>
                                 </a>
+                                <a href="../server/delete_history.php?history_id=<?= $key; ?>">
+                                    <button class="delete">Изтрий</button>
+                                </a>
                             </div>
                         </div>
 <?php

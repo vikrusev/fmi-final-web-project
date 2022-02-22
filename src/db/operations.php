@@ -82,6 +82,14 @@ function getUser($conn, $user_name) {
     return $result->fetch_assoc();
 }
 
+function deleteHistoryById($conn, $history_id) {
+    $query = "DELETE FROM histories WHERE id=?";
+
+    $stmt = prepareQuery($conn, $query);
+    $stmt->bind_param('i', $history_id);
+    $stmt->execute();
+}
+
 function getHistoryById($conn, $user_id, $history_id) {
     $query = "SELECT * FROM histories WHERE user_id=? AND id=? ORDER BY id DESC";
 

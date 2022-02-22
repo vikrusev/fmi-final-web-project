@@ -12,6 +12,9 @@
     --dark-blue: #283edc;
     --light-yellowish: #f0f579;
     --dark-yellowish: #d59c1c;
+    --white: #fff;
+    --black: #000;
+    --red: #f00;
 }
 
 html,
@@ -188,9 +191,19 @@ body {
     background-color: var(--light-blue);
 }
 
+#history button.delete {
+    color: var(--white);
+    background-color: var(--red);
+}
+
+#history button.delete:hover {
+    background-color: var(--black);
+}
+
 #response button.back,
 #history button.back,
 #history button.edit,
+#history button.delete,
 #form button.logout,
 #form button.history {
     width: fit-content;
