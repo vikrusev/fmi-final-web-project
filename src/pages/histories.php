@@ -27,9 +27,12 @@
                         $history_display = json_decode($history);
                         unset($history_display->name);
                         $history_display = json_encode($history_display, JSON_PRETTY_PRINT);
+
+                        $history_name = json_decode($history)->name;
 ?>
                         <div class="history-item">
-                            <span class="config-name">Име: <?= json_decode($history)->name; ?></span>
+                            <span class="config-name">Име: <?= $history_name; ?></span>
+                            <span class="config-name">ID: <?= $key ?></span>
 
                             <pre><?= $history_display; ?></pre>
 
@@ -38,9 +41,7 @@
                                 <a href="../pages/form.php?history_id=<?= $key; ?>">
                                     <button class="edit">Промени</button>
                                 </a>
-                                <a href="../server/delete_history.php?history_id=<?= $key; ?>">
-                                    <button class="delete">Изтрий</button>
-                                </a>
+                                <button onclick="deleteHistoryItem(<?= $key; ?>, '<?= $history_name ?>')" class="delete">Изтрий</button>
                             </div>
                         </div>
 <?php
