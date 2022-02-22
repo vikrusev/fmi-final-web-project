@@ -17,7 +17,7 @@
 
     <div class="container">
         <div id="main">
-            <form id="form" method="POST" action="../server/generate_file.php">
+            <form id="form" method="POST" action="../server/generate_file.php" autocomplete="off">
 
                 <?php
                     foreach ($config_vars as $field_name => $class) {
