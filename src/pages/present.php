@@ -34,7 +34,8 @@
                 <a href="../pages/form.php?history_id=<?= $key; ?>">
                     <button class="edit">Промени</button>
                 </a>
-                <button class="back" onclick="goBack()">Назад</button>
+                <a href="../server/get_history.php"><button type="button" class="history">История</button></a>
+                <button class="back" onclick="goBack('form.php')">Назад</button>
             </div>
         </div>
     </div>

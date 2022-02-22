@@ -233,14 +233,16 @@ body {
     background-color: var(--dark-blue);
 }
 
-#form button.history:hover {
+#form button.history:hover,
+#response button.history:hover {
     color: var(--light-yellowish);
     background-color: var(--dark-yellowish);
     border-color: var(--middle-green);
     cursor: pointer;
 }
 
-#form button.history {
+#form button.history,
+#response button.history {
     color: var(--dark-yellowish);
     background-color: var(--light-yellowish);
     border-color: #e7dacf;

@@ -14,8 +14,8 @@ function copyToClipboard(json) {
     alert('Запазено в клипборда!');
 }
 
-function goBack() {
-    window.location.replace(document.referrer.split('?')[0]);
+function goBack(target) {
+    window.location.replace(target);
 }
 
 function logout() {
