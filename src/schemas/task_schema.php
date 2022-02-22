@@ -41,7 +41,7 @@ class TaskConfiguration extends BaseTaskConfiguration {
     {
         parent::__construct($obj);
 
-        $this->name = new HTML_Text(get_property($obj, 'name') ?: '');
+        $this->name = new HTML_Text(get_property($obj, 'name') ?: 'По подразбиране');
         $this->version = new HTML_Text(get_property($obj, 'version') ?: '1.0.0');
         $this->windows = new BaseTaskConfiguration(get_property($obj, 'windows') ?: NULL);
         $this->linux = new BaseTaskConfiguration(get_property($obj, 'linux') ?: NULL);
